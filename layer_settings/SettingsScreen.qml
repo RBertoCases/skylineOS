@@ -15,12 +15,6 @@ FocusScope {
         }
 
         ListElement {
-            settingName: "Time Format"
-            settingSubtitle: "(Requires Reload)"
-            setting: "12hr,24hr"
-        }
-
-        ListElement {
             settingName: "Word Wrap on Titles"
             settingSubtitle: "(Requires Reload)"
             setting: "Yes,No"
@@ -35,7 +29,23 @@ FocusScope {
         }
     }
 
-    property var settingsArr: [generalPage]
+    ListModel {
+        id: homeSettingsModel
+        ListElement {
+            settingName: "Time Format"
+            settingSubtitle: "(Requires Reload)"
+            setting: "12hr,24hr"
+        }
+    }
+
+    property var homePage: {
+        return {
+            pageName: "Home Screen",
+            listmodel: homeSettingsModel
+        }
+    }
+
+    property var settingsArr: [generalPage, homePage]
 
     property real itemheight: vpx(50)
 
@@ -126,7 +136,7 @@ FocusScope {
 
                 // Page name
                 Text {
-                id: oageNameText
+                id: pageNameText
                 
                     text: modelData.pageName
                     color: theme.text
@@ -146,7 +156,7 @@ FocusScope {
                 // Mouse/touch functionality
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: false
+                    hoverEnabled: true
                     onEntered: { menuNavSfx.play(); }
                     onClicked: {
                         selectSfx.play();
@@ -318,8 +328,8 @@ FocusScope {
                 // Mouse/touch functionality
                 MouseArea {
                     anchors.fill: parent
-                    //hoverEnabled: false
-                    onEntered: { menuNavSfx.play(); }
+                    hoverEnabled: false //settings.MouseHover == "Yes"
+                    onEntered: { sfxNav.play(); }
                     onClicked: {
                         sfxToggle.play();
                         if(selected){ 
