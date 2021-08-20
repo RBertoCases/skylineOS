@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.11
 import QtGraphicalEffects 1.0
 
 FocusScope {
-//id: root
+id: root
 
     ListModel {
     id: settingsModel
@@ -96,7 +96,7 @@ FocusScope {
         }
 
         MouseArea {
-                anchors.fill: headerIcon
+                anchors.fill: parent
                 hoverEnabled: true
                 onEntered: {}
                 onExited: {}
@@ -159,7 +159,7 @@ FocusScope {
                     hoverEnabled: true
                     onEntered: { menuNavSfx.play(); }
                     onClicked: {
-                        selectSfx.play();
+                        //menuNavSfx.play();
                         pagelist.currentIndex = index;
                         settingsList.focus = true;
                     }
@@ -329,13 +329,14 @@ FocusScope {
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: false //settings.MouseHover == "Yes"
-                    onEntered: { sfxNav.play(); }
+                    onEntered: { menuNavSfx.play(); }
                     onClicked: {
-                        sfxToggle.play();
-                        if(selected){ 
+                        if(selected){
+                            selectSfx.play();
                             nextSetting();
                             saveSetting();
                         } else {
+                            //menuNavSfx.play();
                             settingsList.focus = true;
                             settingsList.currentIndex = index;
                         }
