@@ -106,23 +106,78 @@ FocusScope
 
             // Nintendo's Sort Options: "By Time Last Played", "By Total Play Time", "By Title", "By Publisher"
             // Probably won't do "By Publisher"
-            Text {
-                id: sortTypeTxt
-                text:sortTitle
+            Rectangle {
+                id: sortButton
+
+                width: sortTypeTxt.contentWidth + vpx(90)
+                height: Math.round(screenheight*0.0611)
+                color: theme.main
 
                 anchors {
-                    verticalCenter: headerIcon.verticalCenter;
-                    right: topBar.right
+                    top: parent.top; topMargin: Math.round(screenheight*0.0416)
+                    right: parent.right; rightMargin: vpx(23)
                 }
-                color: theme.text
-                font.family: titleFont.name
-                font.weight: Font.Thin
-                font.pixelSize: Math.round(screenheight*0.02)
-                horizontalAlignment: Text.Right
+
+                Image {
+                    id: sortIcon
+                    width: Math.round(screenheight*0.04)
+                    height: width
+                    source: "../assets/images/controller/"+ processButtonArt(api.keys.filters) + ".png"
+                    sourceSize.width: 64
+                    sourceSize.height: 64
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        left: parent.left; leftMargin: vpx(10)
+                    }
+                }
+
+                ColorOverlay {
+                    anchors.fill: sortIcon
+                    source: sortIcon
+                    color: theme.text
+                    cached: true
+                }
+
+                Text {
+                    id: sortTypeTxt
+                    text:sortTitle
+
+                    anchors {
+                        left: sortIcon.right
+                        leftMargin: vpx(3); rightMargin: vpx(17)
+                        verticalCenter: sortIcon.verticalCenter
+                    }
+
+                    color: theme.text
+                    font.family: titleFont.name
+                    font.weight: Font.Thin
+                    font.pixelSize: Math.round(screenheight*0.02)
+                    horizontalAlignment: Text.Right
+                }
+
+                Image {
+                    id: sortArrow
+                    width: Math.round(screenheight*0.03)
+                    height: width
+                    source: "../assets/images/navigation/sort_arrow.png"
+                    sourceSize.width: 64
+                    sourceSize.height: 64
+                    anchors {
+                        verticalCenter: parent.verticalCenter
+                        left: sortTypeTxt.right; leftMargin: vpx(10)
+                    }
+                }
+
+                ColorOverlay {
+                    anchors.fill: sortArrow
+                    source: sortArrow
+                    color: theme.text
+                    cached: true
+                }
             }
 
             MouseArea {
-                anchors.fill: sortTypeTxt
+                anchors.fill: sortButton
                 hoverEnabled: true
                 onEntered: {}
                 onExited: {}
@@ -136,26 +191,7 @@ FocusScope
                 cached: true
             }
 
-            Image {
-                id: sortIcon
-                width: Math.round(screenheight*0.04)
-                height: width
-                source: "../assets/images/controller/"+ processButtonArt(api.keys.filters) + ".png"
-                sourceSize.width: 64
-                sourceSize.height: 64
-                anchors {
-                    verticalCenter: sortTypeTxt.verticalCenter
-                    right: sortTypeTxt.left
-                    rightMargin: vpx(5)
-                }
-            }
-
-            ColorOverlay {
-                anchors.fill: sortIcon
-                source: sortIcon
-                color: theme.text
-                cached: true
-            }
+            
 
             MouseArea {
                 anchors.fill: headerIcon
