@@ -59,10 +59,17 @@ FocusScope
             }
             if (api.keys.isFilters(event)) {
                 event.accepted = true;
+                na.running = true
                 cycleSort();
                 return;
             }
         }
+
+        SequentialAnimation {
+            id: na
+            ColorAnimation { target: sortButton; property: "color"; from: sortButton.color; to: theme.accent; duration: 150; easing.type: Easing.OutQuad }
+            ColorAnimation { target: sortButton; property: "color"; from: theme.accent; to: sortButton.color; duration: 150; easing.type: Easing.OutQuad }
+            }
 
         // Top bar
         Item
@@ -181,8 +188,9 @@ FocusScope
                 hoverEnabled: true
                 onEntered: {}
                 onExited: {}
-                onClicked: cycleSort();
+                onClicked: {na.running = true; cycleSort();}
             }
+
 
             ColorOverlay {
                 anchors.fill: headerIcon
