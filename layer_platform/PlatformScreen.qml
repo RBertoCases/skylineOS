@@ -14,6 +14,7 @@ FocusScope
     id: gamesListModel
 
         property var activeCollection: listRecent.games
+        
 
         Component.onCompleted: {
             clear();
@@ -64,11 +65,8 @@ FocusScope
         id: platformScreenContainer
         width: parent.width
         height: parent.height
-        
 
-        /*onVisibleChanged: {
-            platformSwitcher.focus = true;
-        }*/
+        property var batteryStatus: isNaN(api.device.batteryPercent) ? "" : parseInt(api.device.batteryPercent*100);
 
         Item {
         id: topbar
@@ -145,7 +143,7 @@ FocusScope
 
                 anchors {
                     verticalCenter: profileIcon.verticalCenter;
-                    right: parent.right
+                    right: batteryPercentage.left; rightMargin: vpx(15)
                 }
                 color: theme.text
                 font.family: titleFont.name
@@ -155,6 +153,76 @@ FocusScope
                 horizontalAlignment: Text.Right
                 font.capitalization: Font.SmallCaps
             }
+
+            Text {
+                id: batteryPercentage
+
+                function set() {
+                    batteryPercentage.text = platformScreenContainer.batteryStatus+"%";
+                }
+
+                Timer {
+                    id: percentTimer
+                    interval: 60000 // Run the timer every minute
+                    repeat: true
+                    running: true
+                    triggeredOnStart: true
+                    onTriggered: batteryPercentage.set()
+                }
+
+                anchors {
+                    verticalCenter: profileIcon.verticalCenter;
+                    //left: sysTime.right;
+                    right: batteryIcon.left; rightMargin: vpx(5)
+                }
+
+                color: theme.text
+                font.family: titleFont.name
+                font.weight: Font.Bold
+                font.letterSpacing: 1
+                font.pixelSize: Math.round(screenheight*0.0277)
+                horizontalAlignment: Text.Right
+                Component.onCompleted: font.capitalization = Font.SmallCaps
+                //font.capitalization: Font.SmallCaps
+            }
+
+            BatteryIcon{
+                id: batteryIcon
+
+                function set() {
+                    batteryIcon.level = platformScreenContainer.batteryStatus;
+                }
+
+                Timer {
+                    id: iconTimer
+                    interval: 60000 // Run the timer every minute
+                    repeat: true
+                    running: true
+                    triggeredOnStart: true
+                    onTriggered: batteryIcon.set()
+                }
+
+                width: Math.round(screenheight * 0.0533)
+                height: batteryPercentage.paintedHeight
+
+                anchors {
+                    top: parent.top; topMargin: vpx(11);
+                    verticalCenter: profileIcon.verticalCenter;
+                    right: parent.right;
+                }
+
+                visible: false
+            }
+
+            ColorOverlay {
+                anchors.fill: batteryIcon
+                source: batteryIcon
+                color: theme.text
+                antialiasing: true
+                cached: true
+            }
+
+            
         }
 
 
