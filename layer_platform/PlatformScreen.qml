@@ -173,9 +173,9 @@ FocusScope
                         Timer {
                             id: percentTimer
                             interval: 60000 // Run the timer every minute
-                            repeat: showPercent
-                            running: showPercent
-                            triggeredOnStart: showPercent
+                            repeat: isNaN(api.device.batteryPercent) ? "" : showPercent
+                            running: isNaN(api.device.batteryPercent) ? "" : showPercent
+                            triggeredOnStart: isNaN(api.device.batteryPercent) ? "" : showPercent
                             onTriggered: batteryPercentage.set()
                         }
 
@@ -193,7 +193,7 @@ FocusScope
                         horizontalAlignment: Text.Right
                         Component.onCompleted: font.capitalization = Font.SmallCaps
                         //font.capitalization: Font.SmallCaps
-                        visible: showPercent
+                        visible: isNaN(api.device.batteryPercent) ? "" : showPercent
                     }
 
                     BatteryIcon{
@@ -225,7 +225,7 @@ FocusScope
                         //     right: parent.right;
                         // }
 
-                        visible: true
+                        visible: isNaN(api.device.batteryPercent) ? false : true
                     }
                 }
                 // ColorOverlay {
