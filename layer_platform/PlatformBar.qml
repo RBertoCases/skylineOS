@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick 2.15
 import QtGraphicalEffects 1.12
 import "../global"
 import "../Lists"
@@ -28,6 +28,7 @@ ListView {
 
     model: gamesListModel
     delegate: platformBarDelegate
+    reuseItems: true
 
     Component {
         id: platformBarDelegate
@@ -62,7 +63,7 @@ ListView {
             }
             
             anchors.verticalCenter: parent.verticalCenter
-            
+
 
             Image {
                 id: logo
