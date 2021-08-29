@@ -36,6 +36,11 @@ id: root
             settingSubtitle: "(Requires Reload)"
             setting: "12hr,24hr"
         }
+        ListElement {
+            settingName: "Display Battery Percentage"
+            settingSubtitle: "(%)"
+            setting: "No,Yes"
+        }
     }
 
     property var homePage: {
@@ -272,7 +277,7 @@ id: root
                 id: settingtext; 
                 
                     text: settingList[savedIndex]; 
-                    color: theme.text
+                    color: theme.accent
                     //font.family: subtitleFont.name
                     font.pixelSize: vpx(20)
                     verticalAlignment: Text.AlignVCenter

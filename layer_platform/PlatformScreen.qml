@@ -171,9 +171,9 @@ FocusScope
                         Timer {
                             id: percentTimer
                             interval: 60000 // Run the timer every minute
-                            repeat: true
-                            running: true
-                            triggeredOnStart: true
+                            repeat: showPercent
+                            running: showPercent
+                            triggeredOnStart: showPercent
                             onTriggered: batteryPercentage.set()
                         }
 
@@ -191,7 +191,7 @@ FocusScope
                         horizontalAlignment: Text.Right
                         Component.onCompleted: font.capitalization = Font.SmallCaps
                         //font.capitalization: Font.SmallCaps
-                        visible: true
+                        visible: showPercent
                     }
 
                     BatteryIcon{

@@ -20,9 +20,10 @@ FocusScope
     // Load settings
     property var settings: {
         return {
-            gameBackground:     api.memory.has("Game Tile Background") ? api.memory.get("Game Tile Background") : "Screenshot",
-            timeFormat:         api.memory.has("Time Format") ? api.memory.get("Time Format") : "12hr",
-            wordWrap:           api.memory.has("Word Wrap on Titles") ? api.memory.get("Word Wrap on Titles") : "Yes"
+            gameBackground:         api.memory.has("Game Tile Background") ? api.memory.get("Game Tile Background") : "Screenshot",
+            timeFormat:             api.memory.has("Time Format") ? api.memory.get("Time Format") : "12hr",
+            wordWrap:               api.memory.has("Word Wrap on Titles") ? api.memory.get("Word Wrap on Titles") : "Yes",
+            batteryPercentSetting:  api.memory.has("Display Battery Percentage") ? api.memory.get("Display Battery Percentage") : "No"
         }
     }
 
@@ -41,6 +42,7 @@ FocusScope
     property int sortByIndex: api.memory.has('sortIndex') ? api.memory.get('sortIndex') : 0
     property string searchtext
     property bool wordWrap: (settings.wordWrap === "Yes") ? true : false;
+    property bool showPercent: (settings.batteryPercentSetting === "Yes") ? true : false;
 
     onNextCollectionChanged: { changeCollection() }
 
