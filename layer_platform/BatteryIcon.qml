@@ -21,10 +21,10 @@ Item {
     }
 
     Image {
-        width: Math.round(screenheight * 0.0533)
-        height: width
+        width: Math.round(screenheight * 0.0433)
+        height: width / 1.5
         source: getBatteryIcon();
-        sourceSize { width: 128; height:128 }
+        sourceSize { width: 128; height:64 }
         smooth: true
     }
 
