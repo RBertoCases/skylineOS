@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtGraphicalEffects 1.12
 import QtQuick.Layouts 1.11
 import "../utils.js" as Utils
@@ -14,7 +14,6 @@ FocusScope
     id: gamesListModel
 
         property var activeCollection: listRecent.games
-        
 
         Component.onCompleted: {
             clear();
@@ -120,109 +119,122 @@ FocusScope
                         left: profileIcon.right; leftMargin: vpx(12)
                     }
                 }
-
-            Text
-            {
-                id: sysTime
-
-                //12HR-"h:mmap" 24HR-"hh:mm"
-                property var timeSetting: (settings.timeFormat === "12hr") ? "h:mmap" : "hh:mm";
-
-                function set() {
-                    sysTime.text = Qt.formatTime(new Date(), timeSetting) 
-                }
-
-                Timer {
-                    id: textTimer
-                    interval: 60000 // Run the timer every minute
-                    repeat: true
-                    running: true
-                    triggeredOnStart: true
-                    onTriggered: sysTime.set()
-                }
-
-                anchors {
-                    verticalCenter: profileIcon.verticalCenter;
-                    right: batteryPercentage.left; rightMargin: vpx(15)
-                }
-                color: theme.text
-                font.family: titleFont.name
-                font.weight: Font.Bold
-                font.letterSpacing: 4
-                font.pixelSize: Math.round(screenheight*0.0277)
-                horizontalAlignment: Text.Right
-                font.capitalization: Font.SmallCaps
-            }
-
-            Text {
-                id: batteryPercentage
-
-                function set() {
-                    batteryPercentage.text = platformScreenContainer.batteryStatus+"%";
-                }
-
-                Timer {
-                    id: percentTimer
-                    interval: 60000 // Run the timer every minute
-                    repeat: true
-                    running: true
-                    triggeredOnStart: true
-                    onTriggered: batteryPercentage.set()
-                }
-
-                anchors {
-                    verticalCenter: profileIcon.verticalCenter;
-                    //left: sysTime.right;
-                    right: batteryIcon.left; rightMargin: vpx(5)
-                }
-
-                color: theme.text
-                font.family: titleFont.name
-                font.weight: Font.Bold
-                font.letterSpacing: 1
-                font.pixelSize: Math.round(screenheight*0.0277)
-                horizontalAlignment: Text.Right
-                Component.onCompleted: font.capitalization = Font.SmallCaps
-                //font.capitalization: Font.SmallCaps
-            }
-
-            BatteryIcon{
-                id: batteryIcon
-
-                function set() {
-                    batteryIcon.level = platformScreenContainer.batteryStatus;
-                }
-
-                Timer {
-                    id: iconTimer
-                    interval: 60000 // Run the timer every minute
-                    repeat: true
-                    running: true
-                    triggeredOnStart: true
-                    onTriggered: batteryIcon.set()
-                }
-
-                width: Math.round(screenheight * 0.0533)
-                height: batteryPercentage.paintedHeight
-
-                anchors {
-                    top: parent.top; topMargin: vpx(11);
-                    verticalCenter: profileIcon.verticalCenter;
-                    right: parent.right;
-                }
-
-                visible: false
-            }
-
-            ColorOverlay {
-                anchors.fill: batteryIcon
-                source: batteryIcon
-                color: theme.text
-                antialiasing: true
-                cached: true
-            }
-
             
+            RowLayout {
+                spacing: vpx(15)
+                anchors {
+                        verticalCenter: profileIcon.verticalCenter;
+                        right: parent.right; rightMargin: vpx(15)
+                    }
+                Text
+                {
+                    id: sysTime
+
+                    //12HR-"h:mmap" 24HR-"hh:mm"
+                    property var timeSetting: (settings.timeFormat === "12hr") ? "h:mmap" : "hh:mm";
+
+                    function set() {
+                        sysTime.text = Qt.formatTime(new Date(), timeSetting) 
+                    }
+
+                    Timer {
+                        id: textTimer
+                        interval: 60000 // Run the timer every minute
+                        repeat: true
+                        running: true
+                        triggeredOnStart: true
+                        onTriggered: sysTime.set()
+                    }
+
+                    // anchors {
+                    //     verticalCenter: profileIcon.verticalCenter;
+                    //     right: parent.right; rightMargin: vpx(15)
+                    // }
+                    color: theme.text
+                    font.family: titleFont.name
+                    font.weight: Font.Bold
+                    font.letterSpacing: 4
+                    font.pixelSize: Math.round(screenheight*0.0277)
+                    horizontalAlignment: Text.Right
+                    font.capitalization: Font.SmallCaps
+                }
+                Row{
+                    spacing: vpx(5)
+
+                    Text {
+                        id: batteryPercentage
+
+                        function set() {
+                            batteryPercentage.text = platformScreenContainer.batteryStatus+"%";
+                        }
+
+                        Timer {
+                            id: percentTimer
+                            interval: 60000 // Run the timer every minute
+                            repeat: true
+                            running: true
+                            triggeredOnStart: true
+                            onTriggered: batteryPercentage.set()
+                        }
+
+                        // anchors {
+                        //     verticalCenter: profileIcon.verticalCenter;
+                        //     //left: sysTime.right;
+                        //     right: parent.right; rightMargin: vpx(5)
+                        // }
+
+                        color: theme.text
+                        font.family: titleFont.name
+                        font.weight: Font.Bold
+                        font.letterSpacing: 1
+                        font.pixelSize: Math.round(screenheight*0.0277)
+                        horizontalAlignment: Text.Right
+                        Component.onCompleted: font.capitalization = Font.SmallCaps
+                        //font.capitalization: Font.SmallCaps
+                        visible: true
+                    }
+
+                    BatteryIcon{
+                        id: batteryIcon
+                        width: height * 2
+                        height: sysTime.paintedHeight
+                        layer.enabled: true
+                        layer.effect: ColorOverlay {
+                            color: theme.text
+                            antialiasing: true
+                            cached: true
+                        }
+
+                        function set() {
+                            batteryIcon.level = platformScreenContainer.batteryStatus;
+                        }
+
+                        Timer {
+                            id: iconTimer
+                            interval: 60000 // Run the timer every minute
+                            repeat: true
+                            running: true
+                            triggeredOnStart: true
+                            onTriggered: batteryIcon.set()
+                        }
+
+                        // anchors {
+                        //     verticalCenter: profileIcon.verticalCenter;
+                        //     right: parent.right;
+                        // }
+
+                        visible: true
+                    }
+                }
+                // ColorOverlay {
+                //     Layout.alignment: batteryIcon
+                //     source: batteryIcon
+                //     color: theme.text
+                //     antialiasing: true
+                //     cached: true
+                //     visible: true
+                // }
+            }
         }
 
 
