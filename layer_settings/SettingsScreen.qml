@@ -33,7 +33,7 @@ id: root
         id: homeSettingsModel
         ListElement {
             settingName: "Time Format"
-            settingSubtitle: "(Requires Reload)"
+            settingSubtitle: ""
             setting: "12hr,24hr"
         }
         ListElement {

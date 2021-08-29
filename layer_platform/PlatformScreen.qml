@@ -146,6 +146,8 @@ FocusScope
                         onTriggered: sysTime.set()
                     }
 
+                    onTimeSettingChanged: sysTime.set()
+
                     // anchors {
                     //     verticalCenter: profileIcon.verticalCenter;
                     //     right: parent.right; rightMargin: vpx(15)
