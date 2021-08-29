@@ -199,7 +199,7 @@ ListView {
 
             Component.onCompleted: {
                 if (wordWrap) {
-                    if (topTitle.paintedWidth > gameImage.width * 1.75) {
+                    if (topTitle.paintedWidth > gameImage.width * 1.70) {
                         topTitle.width = gameImage.width * 1.5
                     }
                 }
