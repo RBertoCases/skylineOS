@@ -28,7 +28,6 @@ ListView {
 
     model: gamesListModel
     delegate: platformBarDelegate
-    reuseItems: true
 
     Component {
         id: platformBarDelegate
