@@ -73,7 +73,7 @@ ListView {
                 property var logoImage: {
                     if (gameData != null) {
                         if (gameData.collections.get(0).shortName === "retropie")
-                            return gameData.assets.boxFront;
+                            return "";//gameData.assets.boxFront;
                         else if (gameData.collections.get(0).shortName === "steam")
                             return Utils.logo(gameData) ? Utils.logo(gameData) : "" //root.logo(gameData);
                         else if (gameData.assets.tile != "")
@@ -123,9 +123,9 @@ ListView {
             property var gameBG: {
                 switch (settings.gameBackground) {
                     case "Screenshot":
-                        return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || "" : "";
+                        return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || gameData.assets.boxFront || "" : "";
                     case "Fanart":
-                        return gameData ? gameData.assets.tile || gameData.assets.background || gameData.assets.screenshots[0] || "" : "";
+                        return gameData ? gameData.assets.tile || gameData.assets.background || gameData.assets.screenshots[0] || gameData.assets.boxFront || "" : "";
                     default:
                         return ""
                 }
@@ -136,7 +136,7 @@ ListView {
                 width: parent.width
                 height: width
                 smooth: true
-                fillMode: Image.PreserveAspectCrop
+                fillMode: (gameBG == gameData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
                 source: gameBG //gameData ? gameData.assets.background || gameData.assets.screenshots[0] || "" : ""
                 asynchronous: true
                 sourceSize { width: 512; height: 512 }
