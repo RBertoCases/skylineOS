@@ -86,8 +86,8 @@ id: root
             width: Math.round(screenheight*0.0611)
             height: width
             source: "../assets/images/navigation/Settings.png"
-            sourceSize.width: vpx(128)
-            sourceSize.height: vpx(128)
+            sourceSize.width: vpx(64)
+            sourceSize.height: vpx(64)
 
             anchors {
                 top: parent.top; topMargin: Math.round(screenheight*0.0416)
@@ -237,7 +237,7 @@ id: root
         preferredHighlightEnd: settingsList.height / 2
         highlightRangeMode: ListView.ApplyRange
         highlightMoveDuration: 100
-        clip: true
+        clip: false
 
         Component {
         id: settingsDelegate
