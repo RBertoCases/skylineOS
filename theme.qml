@@ -23,7 +23,8 @@ FocusScope
             gameBackground:         api.memory.has("Game Tile Background") ? api.memory.get("Game Tile Background") : "Screenshot",
             timeFormat:             api.memory.has("Time Format") ? api.memory.get("Time Format") : "12hr",
             wordWrap:               api.memory.has("Word Wrap on Titles") ? api.memory.get("Word Wrap on Titles") : "Yes",
-            batteryPercentSetting:  api.memory.has("Display Battery Percentage") ? api.memory.get("Display Battery Percentage") : "No"
+            batteryPercentSetting:  api.memory.has("Display Battery Percentage") ? api.memory.get("Display Battery Percentage") : "No",
+            enableDropShadows:      api.memory.has("Enable DropShadows") ? api.memory.get("Enable DropShadows") : "Yes"
         }
     }
 
@@ -43,6 +44,7 @@ FocusScope
     property string searchtext
     property bool wordWrap: (settings.wordWrap === "Yes") ? true : false;
     property bool showPercent: (settings.batteryPercentSetting === "Yes") ? true : false;
+    property bool enableDropShadows: (settings.enableDropShadows === "Yes") ? true: false; 
 
     onNextCollectionChanged: { changeCollection() }
 

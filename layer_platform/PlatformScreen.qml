@@ -95,16 +95,16 @@ FocusScope
                 antialiasing: true
             }
 
-            DropShadow {
-                id: profileIconShadow
-                anchors.fill: profileIcon
-                horizontalOffset: 0
-                verticalOffset: 2
-                radius: 6.0
-                samples: 6
-                color: "#1F000000"
-                source: profileIcon
-            }
+            // DropShadow {
+            //     id: profileIconShadow
+            //     anchors.fill: profileIcon
+            //     horizontalOffset: 0
+            //     verticalOffset: 2
+            //     radius: 6.0
+            //     samples: 6
+            //     color: "#1F000000"
+            //     source: profileIcon
+            // }
 
             Text
                 {

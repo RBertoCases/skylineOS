@@ -50,7 +50,23 @@ id: root
         }
     }
 
-    property var settingsArr: [generalPage, homePage]
+    ListModel {
+        id: perfSettingsModel
+        ListElement {
+            settingName: "Enable DropShadows"
+            settingSubtitle: "(Requires Reload)"
+            setting: "Yes, No"
+        }
+    }
+
+    property var performancePage: {
+        return {
+            pageName: "Performance",
+            listmodel: perfSettingsModel
+        }
+    }
+
+    property var settingsArr: [generalPage, homePage, performancePage]
 
     property real itemheight: vpx(50)
 
