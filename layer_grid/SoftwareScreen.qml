@@ -1,4 +1,4 @@
-import QtQuick 2.8
+import QtQuick 2.15
 import QtGraphicalEffects 1.0
 import "../global"
 import "../Lists"
