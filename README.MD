@@ -17,10 +17,10 @@ See [wiki](https://github.com/RBertoCases/skylineOS/wiki) for more information.
 
 v0.10
 
-- Added a battery indicator on the Home Screen along with a setting for displaying the Percentage.
-- Added a setting for disabling Drop Shadows
-- Improved performance on RetroPie (tested on Raspberry Pi 4)
-- General system stability improvements have been made to enhance the user's experience.
+- Added a battery indicator on the Home Screen along with a setting for displaying the Percentage
+- Added a Performance setting for disabling Drop Shadows
+- Fixed a bug causing major lag on RetroPie (tested on Raspberry Pi 4)
+- General system stability improvements have been made to enhance the user's experience
 
 v0.9.4
 
