@@ -364,7 +364,7 @@ FocusScope
                         source: modelData ? logoImage || "" : "" //modelData.assets.logo ? modelData.assets.logo : ""
                         sourceSize { width: 256; height: 256 }
                         fillMode: Image.PreserveAspectFit
-                        smooth: false
+                        smooth: true
                         visible: modelData.assets.logo ? modelData.assets.logo : ""
                         z:8
                     }
