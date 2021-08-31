@@ -118,7 +118,7 @@ id: root
 
         MouseArea {
                 anchors.fill: parent
-                hoverEnabled: true
+                hoverEnabled: false
                 onEntered: {}
                 onExited: {}
                 onClicked: showHomeScreen();
@@ -177,10 +177,10 @@ id: root
                 // Mouse/touch functionality
                 MouseArea {
                     anchors.fill: parent
-                    hoverEnabled: true
-                    onEntered: { menuNavSfx.play(); }
+                    hoverEnabled: false
+                    onEntered: { /*navSound.play();*/}
                     onClicked: {
-                        //menuNavSfx.play();
+                        navSound.play();
                         pagelist.currentIndex = index;
                         settingsList.focus = true;
                     }
@@ -189,13 +189,13 @@ id: root
             }
         } 
 
-        Keys.onUpPressed: { menuNavSfx.play(); decrementCurrentIndex() }
-        Keys.onDownPressed: { menuNavSfx.play(); incrementCurrentIndex() }
+        Keys.onUpPressed: { navSound.play(); decrementCurrentIndex() }
+        Keys.onDownPressed: { navSound.play(); incrementCurrentIndex() }
         Keys.onPressed: {
             // Accept
             if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                 event.accepted = true;
-                selectSfx.play();
+                navSound.play();
                 settingsList.focus = true;
             }
             // Back
@@ -341,7 +341,7 @@ id: root
                     // Back
                     if (api.keys.isCancel(event) && !event.isAutoRepeat) {
                         event.accepted = true;
-                        menuNavSfx.play()
+                        navSound.play()
                         pagelist.focus = true;
                     }
                 }
@@ -350,14 +350,14 @@ id: root
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: false //settings.MouseHover == "Yes"
-                    onEntered: { menuNavSfx.play(); }
+                    onEntered: { /*navSound.play();*/ }
                     onClicked: {
                         if(selected){
                             selectSfx.play();
                             nextSetting();
                             saveSetting();
                         } else {
-                            //menuNavSfx.play();
+                            navSound.play();
                             settingsList.focus = true;
                             settingsList.currentIndex = index;
                         }
@@ -366,8 +366,8 @@ id: root
             }
         } 
 
-        Keys.onUpPressed: { menuNavSfx.play(); decrementCurrentIndex() }
-        Keys.onDownPressed: { menuNavSfx.play(); incrementCurrentIndex() }
+        Keys.onUpPressed: { navSound.play(); decrementCurrentIndex() }
+        Keys.onDownPressed: { navSound.play(); incrementCurrentIndex() }
     }
 
 }

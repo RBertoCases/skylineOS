@@ -296,7 +296,7 @@ FocusScope
                 }
 
                 Keys.onRightPressed:{
-                    menuNavSfx.play();
+                    navSound.play();
                     settingsButton.focus = true
                 }
 
@@ -308,7 +308,7 @@ FocusScope
                     }
                     else
                         themeButton.focus = true;
-                        menuNavSfx.play();
+                        navSound.play();
                         platformSwitcher.currentIndex = -1;
                 }
             }
@@ -328,7 +328,7 @@ FocusScope
                 }
 
                 Keys.onLeftPressed:{
-                    menuNavSfx.play();
+                    navSound.play();
                     themeButton.focus = true
                 }
 
@@ -342,7 +342,7 @@ FocusScope
                     }
                     else
                         settingsButton.focus = true;
-                        menuNavSfx.play();
+                        navSound.play();
                         platformSwitcher.currentIndex = -1;
                 }
                 visible: true

@@ -235,7 +235,7 @@ ListView {
 
     Keys.onDownPressed: {
         _index = currentIndex;
-        menuNavSfx.play();
+        navSound.play();
         themeButton.focus = true
         platformSwitcher.currentIndex = -1
     }
