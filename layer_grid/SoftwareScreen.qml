@@ -365,7 +365,7 @@ FocusScope
                         sourceSize { width: 256; height: 256 }
                         fillMode: Image.PreserveAspectFit
                         smooth: true
-                        visible: modelData.assets.logo ? modelData.assets.logo : ""
+                        visible: modelData.assets.logo && gameBG != modelData.assets.boxFront ? true : false
                         z:8
                     }
 
