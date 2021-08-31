@@ -54,7 +54,7 @@ id: root
         id: perfSettingsModel
         ListElement {
             settingName: "Enable DropShadows"
-            settingSubtitle: "(Requires Reload)"
+            settingSubtitle: ""
             setting: "Yes, No"
         }
     }
