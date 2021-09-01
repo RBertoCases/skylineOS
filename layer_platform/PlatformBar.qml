@@ -91,7 +91,7 @@ ListView {
                 asynchronous: true
                 smooth: true
                 z: 10
-                visible: gameData.assets.logo && gameBG != gameData.assets.boxFront && idx > -3 ? true : false //idx > -3 ? true : false
+                visible: idx > -3 && !(gameBG == gameData.assets.boxFront) ? true : false //idx > -3 ? true : false
             }
 
             ColorOverlay {
