@@ -20,7 +20,7 @@ FocusScope
     // Load settings
     property var settings: {
         return {
-            gameBackground:         api.memory.has("Game Tile Background") ? api.memory.get("Game Tile Background") : "Screenshot",
+            gameBackground:         api.memory.has("Game Background") ? api.memory.get("Game Background") : "Screenshot",
             timeFormat:             api.memory.has("Time Format") ? api.memory.get("Time Format") : "12hr",
             wordWrap:               api.memory.has("Word Wrap on Titles") ? api.memory.get("Word Wrap on Titles") : "Yes",
             batteryPercentSetting:  api.memory.has("Display Battery Percentage") ? api.memory.get("Display Battery Percentage") : "No",

@@ -9,7 +9,7 @@ id: root
     id: settingsModel
 
         ListElement {
-            settingName: "Game Tile Background"
+            settingName: "Game Background"
             settingSubtitle: ""
             setting: "Screenshot,Fanart"
         }

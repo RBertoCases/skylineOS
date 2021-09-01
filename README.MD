@@ -19,6 +19,7 @@ v0.10
 
 - Added a battery indicator on the Home Screen along with a setting for displaying the Percentage
 - Added a Performance setting for disabling Drop Shadows
+- Box art will now be used a last preference for Game Backgrounds
 - Fixed a bug causing major lag on RetroPie (tested on Raspberry Pi 4)
 - General system stability improvements have been made to enhance the user's experience
 

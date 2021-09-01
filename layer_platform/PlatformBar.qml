@@ -119,7 +119,7 @@ ListView {
                 z: 10
             }
 
-            //preference order for Game Tile Backgrounds, tiles always come first due to assumption that it's set manually
+            //preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
             property var gameBG: {
                 switch (settings.gameBackground) {
                     case "Screenshot":
