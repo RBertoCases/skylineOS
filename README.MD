@@ -1,4 +1,3 @@
-
 # skylineOS v0.10
 
 A clean and simple theme that aims to recreate the experience of Nintendo's Switch console. skylineOS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/) forked from switchOS.
@@ -33,6 +32,7 @@ v0.9.3
 - Disabled the dropshadow on the Software Screen tiles to fix blur
 - Fixed mouse/touch functionality on Settings Screen
 - General system stability improvements have been made to enhance the user's experience
+
 
 v0.9.2
 
