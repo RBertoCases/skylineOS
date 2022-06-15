@@ -74,8 +74,9 @@ ListView {
                 
             }
 
-            //preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
+            // Preference order for Game Backgrounds
             property var gameBG: {
+<<<<<<< HEAD
                 switch (settings.gameBackground) {
                     case "Screenshot":
                         return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || gameData.assets.boxFront || "" : "";
@@ -84,6 +85,9 @@ ListView {
                     default:
                         return ""
                 }
+=======
+                return getGameBackground(gameData, settings.gameBackground);
+>>>>>>> c8f6119 (unified GameBackground + boxArt)
             }
 
             Image {

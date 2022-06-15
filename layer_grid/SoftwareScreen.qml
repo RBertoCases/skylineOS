@@ -315,16 +315,9 @@ FocusScope
                     height: width
                     z: selected ? 10 : 0
 
-                    //preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
+                    // Preference order for Game Backgrounds
                     property var gameBG: {
-                        switch (settings.gameBackground) {
-                            case "Screenshot":
-                                return modelData ? modelData.assets.tile || modelData.assets.screenshots[0] || modelData.assets.background || modelData.assets.boxFront || "" : "";
-                            case "Fanart":
-                                return modelData ? modelData.assets.tile || modelData.assets.background || modelData.assets.screenshots[0] || modelData.assets.boxFront || "" : "";
-                            default:
-                                return ""
-                        }
+                        return getGameBackground(modelData, settings.gameBackground);
                     }
 
                     Image {

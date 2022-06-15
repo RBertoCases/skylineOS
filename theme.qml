@@ -120,6 +120,20 @@ FocusScope
         softwareList[sortByIndex].currentGame(currentGameIndex).launch();
             //currentGame.launch();
     }
+    
+    // Preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
+    function getGameBackground(gameData, preference){
+        switch (preference) {
+            case "Screenshot":
+                return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || gameData.assets.boxFront || "" : "";
+            case "Fanart":
+                return gameData ? gameData.assets.tile || gameData.assets.background || gameData.assets.screenshots[0] || gameData.assets.boxFront || "" : "";
+            case "Boxart":
+                return gameData ? gameData.assets.tile || gameData.assets.boxFront || gameData.assets.screenshots[0] || gameData.assets.background || "" : "";
+            default:
+                return ""
+        }
+    }
 
     // Theme settings
     FontLoader { id: titleFont; source: "assets/fonts/Nintendo_Switch_UI_Font.ttf" }
