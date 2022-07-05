@@ -76,18 +76,7 @@ ListView {
 
             // Preference order for Game Backgrounds
             property var gameBG: {
-<<<<<<< HEAD
-                switch (settings.gameBackground) {
-                    case "Screenshot":
-                        return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || gameData.assets.boxFront || "" : "";
-                    case "Fanart":
-                        return gameData ? gameData.assets.tile || gameData.assets.background || gameData.assets.screenshots[0] || gameData.assets.boxFront || "" : "";
-                    default:
-                        return ""
-                }
-=======
                 return getGameBackground(gameData, settings.gameBackground);
->>>>>>> c8f6119 (unified GameBackground + boxArt)
             }
 
             Image {
