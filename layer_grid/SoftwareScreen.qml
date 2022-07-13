@@ -326,7 +326,7 @@ FocusScope
                         height: parent.height
                         asynchronous: true
                         smooth: true
-                        source: modelData.collections.get(0).shortName === "steam" ? modelData.assets.screenshot : gameBG
+                        source: gameBG // modelData.collections.get(0).shortName === "steam" ? modelData.assets.screenshot : gameBG
                         sourceSize { width: 256; height: 256 }
                         fillMode: (gameBG == modelData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
                         layer.enabled: enableDropShadows //FIXME: disabled because it blurs the gameImages.

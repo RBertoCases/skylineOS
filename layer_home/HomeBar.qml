@@ -85,7 +85,7 @@ ListView {
                 height: width
                 smooth: true
                 fillMode: (gameBG == gameData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
-                source: gameData.collections.get(0).shortName === "steam" ? gameData.assets.screenshot : gameBG
+                source: gameBG // gameData.collections.get(0).shortName === "steam" ? gameData.assets.screenshot : gameBG
                 asynchronous: true
                 sourceSize { width: 512; height: 512 }
                 
@@ -130,6 +130,7 @@ ListView {
                 fillMode: Image.PreserveAspectFit
                 asynchronous: true
                 smooth: true
+                visible: gameData.assets.logo && gameBG != gameData.assets.boxFront ? true : false
                 // z: 10
             }
 
