@@ -23,6 +23,9 @@ Item {
     Image {
         width: Math.round(screenheight * 0.0433)
         height: width / 1.5
+        anchors {
+            verticalCenter: parent.verticalCenter
+        }
         source: getBatteryIcon();
         sourceSize { width: 128; height:64 }
         smooth: true
