@@ -151,7 +151,7 @@ FocusScope
                     id: sortIcon
                     width: Math.round(screenheight*0.04)
                     height: width
-                    source: "../assets/images/navigation/"+ processButtonArt(api.keys.filters) + ".png"
+                    source: "../assets/images/navigation/"+ processButtonArt(api.keys.filters) + ".svg"
                     sourceSize.width: 64
                     sourceSize.height: 64
                     anchors {
@@ -186,7 +186,7 @@ FocusScope
 
                 Image {
                     id: sortArrow
-                    width: Math.round(screenheight*0.03)
+                    width: Math.round(screenheight*0.05)
                     height: width
                     source: "../assets/images/navigation/sort_arrow.png"
                     sourceSize.width: 64

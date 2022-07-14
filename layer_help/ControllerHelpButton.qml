@@ -23,9 +23,9 @@ FocusScope {
 
     Image {
         id: buttonImg
-        width: Math.round(screenheight*0.04)
+        width: Math.round(screenheight*0.05)
         height: width
-        source: "../assets/images/navigation/"+ button + ".png"
+        source: "../assets/images/navigation/"+ button + ".svg"
         sourceSize.width: 128
         sourceSize.height: 128
         anchors {
