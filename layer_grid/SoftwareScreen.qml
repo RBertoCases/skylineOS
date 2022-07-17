@@ -22,6 +22,8 @@ FocusScope
                 return "By Title";
             case 3:
                 return "By Publisher";
+            case 4:
+                return "Favorities"
             default:
                 return ""
         }

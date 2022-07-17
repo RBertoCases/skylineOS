@@ -37,13 +37,14 @@ FocusScope
     ListLastPlayed  { id: listByLastPlayed}
     ListMostPlayed  { id: listByMostPlayed}
     ListPublisher   { id: listByPublisher}
+    ListFavorites   { id: listFavorites}
     ListAllGames    { id: listByTitle}
     Resources.Music { id: music}
 
     property int currentCollection: api.memory.has('Last Collection') ? api.memory.get('Last Collection') : -1
     property int nextCollection: api.memory.has('Last Collection') ? api.memory.get('Last Collection') : -1
     property var currentGame
-    property var softwareList: [listByLastPlayed, listByMostPlayed, listByTitle, listByPublisher]
+    property var softwareList: [listByLastPlayed, listByMostPlayed, listByTitle, listByPublisher, listFavorites]
     property int sortByIndex: api.memory.has('sortIndex') ? api.memory.get('sortIndex') : 0
     property string searchtext
     property bool wordWrap: (settings.wordWrap === "Yes") ? true : false;
