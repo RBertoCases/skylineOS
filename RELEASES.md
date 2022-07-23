@@ -1,6 +1,7 @@
 # Releases
-## Latest
+
 ### v0.15
+
   - Added Favorites - Courtesy of [ismaelestalayo](https://github.com/ismaelestalayo/skylineOSP)
       - Toggle highlighted game as Favorite
       - View Favorites List as Sort/Filter option in Software Screen
@@ -8,8 +9,6 @@
   - Switched source of Button Prompts - Author/Source: [Zacksly](https://zacksly.itch.io/switch-button-icons-and-controls) Licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
   - improved appearance of battery indicator on HomeScreen on Windows (not perfect, but better)
   - General system stability improvements have been made to enhance the user's experience
-
-___
 
 ### v0.14
 
