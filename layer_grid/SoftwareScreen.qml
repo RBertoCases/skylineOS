@@ -51,7 +51,18 @@ FocusScope
         Keys.onPressed: {
             if (event.isAutoRepeat)
                 return;
-
+            
+            if (api.keys.isDetails(event)) {
+                event.accepted = true;
+                if (currentGame.favorite){
+                    turnOffSfx.play();
+                }
+                else {
+                    turnOnSfx.play();
+                }
+                currentGame.favorite = !currentGame.favorite
+                return;
+            }
             if (api.keys.isDetails(event)) {
                 event.accepted = true;
                 return;
@@ -352,6 +363,35 @@ FocusScope
                         opacity: 0.15
                         visible: logo.source != "" && gameImage.source != ""
                     }
+
+                    Rectangle {
+                        id: favicon
+                        anchors { 
+                            right: parent.right; rightMargin: vpx(5); 
+                            top: parent.top; topMargin: vpx(5) 
+                        }
+                        width: vpx(32)
+                        height: width
+                        radius: width/2
+                        color: theme.accent
+                        visible: modelData.favorite
+                        Image {
+                            id: faviconImage
+                            source: "../assets/images/heart_filled.png"
+                            asynchronous: true
+                            anchors.fill: parent
+                            anchors.margins: vpx(7)            
+                        }
+                        
+                        ColorOverlay {
+                            anchors.fill: faviconImage
+                            source: faviconImage
+                            color: "white" //theme.icon
+                            antialiasing: true
+                            smooth: true
+                            cached: true
+                        }
+                }
 
                     // Logo
                     Image {

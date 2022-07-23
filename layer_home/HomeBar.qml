@@ -59,7 +59,7 @@ ListView {
                 radius: isGame ? 0 : width
                 opacity: 1
                 color: theme.button
-                layer.enabled: enableDropShadows
+                layer.enabled: enableDropShadows //TODO turn off when highlighted
                 layer.effect: DropShadow {
                     transparentBorder: true
                     horizontalOffset: 0
@@ -90,6 +90,35 @@ ListView {
                 sourceSize { width: 512; height: 512 }
                 
                 anchors.centerIn: parent
+
+                Rectangle {
+                    id: favicon
+                    anchors { 
+                        right: parent.right; rightMargin: vpx(5); 
+                        top: parent.top; topMargin: vpx(5) 
+                    }
+                    width: vpx(32)
+                    height: width
+                    radius: width/2
+                    color: theme.accent
+                    visible: isGame ? gameData.favorite : false
+                    Image {
+                        id: faviconImage
+                        source: "../assets/images/heart_filled.png"
+                        asynchronous: true
+                        anchors.fill: parent
+                        anchors.margins: vpx(7)            
+                    }
+                    
+                    ColorOverlay {
+                        anchors.fill: faviconImage
+                        source: faviconImage
+                        color: "white" //theme.icon
+                        antialiasing: true
+                        smooth: true
+                        cached: true
+                    }
+                }
                 
             }
 
@@ -269,6 +298,20 @@ ListView {
                 playGame();//launchGame(currentGame);
             }
         }
+
+        if (api.keys.isDetails(event)) {
+            event.accepted = true;
+            if (currentGame.favorite){
+                turnOffSfx.play();
+            }
+            else {
+                turnOnSfx.play();
+            }
+            currentGame.favorite = !currentGame.favorite
+            return;
+        }
     }
+
+    
 }
 

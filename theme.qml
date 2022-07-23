@@ -370,6 +370,7 @@ FocusScope
             }
             showBack: !homeScreen.focus
             showCollControls: softwareScreen.focus
+            showFav: softwareScreen.focus || homeScreen.focus
         }
 
     }
