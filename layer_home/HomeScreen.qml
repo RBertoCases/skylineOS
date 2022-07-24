@@ -147,10 +147,9 @@ FocusScope
 
                     onTimeSettingChanged: sysTime.set()
 
-                    // anchors {
-                    //     verticalCenter: profileIcon.verticalCenter;
-                    //     right: parent.right; rightMargin: vpx(15)
-                    // }
+                    anchors {
+                            verticalCenter: profileIcon.verticalCenter
+                        }
                     color: theme.text
                     font.family: titleFont.name
                     font.weight: Font.Bold
@@ -183,16 +182,19 @@ FocusScope
                         font.weight: Font.Bold
                         font.letterSpacing: 1
                         font.pixelSize: Math.round(screenheight*0.0277)
-                        horizontalAlignment: Text.Right
+                        //horizontalAlignment: Text.Right
+
                         Component.onCompleted: font.capitalization = Font.SmallCaps
-                        //font.capitalization: Font.SmallCaps
+                        anchors {
+                            verticalCenter: sysTime.verticalCenter
+                        }
                         visible: isNaN(api.device.batteryPercent) ? false : showPercent
                     }
 
                     BatteryIcon{
                         id: batteryIcon
-                        width: height * 1.5
-                        height: sysTime.paintedHeight
+                        width: Math.round(screenheight * 0.0433)
+                        height: width / 1.5
                         layer.enabled: true
                         layer.effect: ColorOverlay {
                             color: theme.text
@@ -213,8 +215,10 @@ FocusScope
                             onTriggered: batteryIcon.set()
                         }
 
+                        anchors {
+                            verticalCenter: sysTime.verticalCenter
+                        }
                         visible: isNaN(api.device.batteryPercent) ? false : true
-
                         
                     }
 
@@ -223,14 +227,17 @@ FocusScope
 
                         property bool chargingStatus: api.device.batteryCharging
 
-                        width: height/2
-                        height: sysTime.paintedHeight
+                        width: Math.round(screenheight * 0.0433)
+                        height: width/1.5
                         fillMode: Image.PreserveAspectFit
                         source: "../assets/images/charging.svg"
                         sourceSize.width: 32
                         sourceSize.height: 64
                         smooth: true
                         horizontalAlignment: Image.AlignLeft
+                        anchors {
+                            verticalCenter: sysTime.verticalCenter
+                        }
                         visible: chargingStatus && batteryIcon.level < 99
                         layer.enabled: true
                         layer.effect: ColorOverlay {

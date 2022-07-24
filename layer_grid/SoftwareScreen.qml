@@ -22,6 +22,8 @@ FocusScope
                 return "By Title";
             case 3:
                 return "By Publisher";
+            case 4:
+                return "Favorities"
             default:
                 return ""
         }
@@ -49,7 +51,18 @@ FocusScope
         Keys.onPressed: {
             if (event.isAutoRepeat)
                 return;
-
+            
+            if (api.keys.isDetails(event)) {
+                event.accepted = true;
+                if (currentGame.favorite){
+                    turnOffSfx.play();
+                }
+                else {
+                    turnOnSfx.play();
+                }
+                currentGame.favorite = !currentGame.favorite
+                return;
+            }
             if (api.keys.isDetails(event)) {
                 event.accepted = true;
                 return;
@@ -151,7 +164,7 @@ FocusScope
                     id: sortIcon
                     width: Math.round(screenheight*0.04)
                     height: width
-                    source: "../assets/images/navigation/"+ processButtonArt(api.keys.filters) + ".png"
+                    source: "../assets/images/navigation/"+ processButtonArt(api.keys.filters) + ".svg"
                     sourceSize.width: 64
                     sourceSize.height: 64
                     anchors {
@@ -186,7 +199,7 @@ FocusScope
 
                 Image {
                     id: sortArrow
-                    width: Math.round(screenheight*0.03)
+                    width: Math.round(screenheight*0.05)
                     height: width
                     source: "../assets/images/navigation/sort_arrow.png"
                     sourceSize.width: 64
@@ -315,16 +328,9 @@ FocusScope
                     height: width
                     z: selected ? 10 : 0
 
-                    //preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
+                    // Preference order for Game Backgrounds
                     property var gameBG: {
-                        switch (settings.gameBackground) {
-                            case "Screenshot":
-                                return modelData ? modelData.assets.tile || modelData.assets.screenshots[0] || modelData.assets.background || modelData.assets.boxFront || "" : "";
-                            case "Fanart":
-                                return modelData ? modelData.assets.tile || modelData.assets.background || modelData.assets.screenshots[0] || modelData.assets.boxFront || "" : "";
-                            default:
-                                return ""
-                        }
+                        return getGameBackground(modelData, settings.gameBackground);
                     }
 
                     Image {
@@ -333,7 +339,7 @@ FocusScope
                         height: parent.height
                         asynchronous: true
                         smooth: true
-                        source: modelData.collections.get(0).shortName === "steam" ? modelData.assets.screenshot : gameBG
+                        source: gameBG // modelData.collections.get(0).shortName === "steam" ? modelData.assets.screenshot : gameBG
                         sourceSize { width: 256; height: 256 }
                         fillMode: (gameBG == modelData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
                         layer.enabled: enableDropShadows //FIXME: disabled because it blurs the gameImages.
@@ -357,6 +363,35 @@ FocusScope
                         opacity: 0.15
                         visible: logo.source != "" && gameImage.source != ""
                     }
+
+                    Rectangle {
+                        id: favicon
+                        anchors { 
+                            right: parent.right; rightMargin: vpx(5); 
+                            top: parent.top; topMargin: vpx(5) 
+                        }
+                        width: vpx(32)
+                        height: width
+                        radius: width/2
+                        color: theme.accent
+                        visible: modelData.favorite
+                        Image {
+                            id: faviconImage
+                            source: "../assets/images/heart_filled.png"
+                            asynchronous: true
+                            anchors.fill: parent
+                            anchors.margins: vpx(7)            
+                        }
+                        
+                        ColorOverlay {
+                            anchors.fill: faviconImage
+                            source: faviconImage
+                            color: "white" //theme.icon
+                            antialiasing: true
+                            smooth: true
+                            cached: true
+                        }
+                }
 
                     // Logo
                     Image {

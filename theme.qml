@@ -37,13 +37,14 @@ FocusScope
     ListLastPlayed  { id: listByLastPlayed}
     ListMostPlayed  { id: listByMostPlayed}
     ListPublisher   { id: listByPublisher}
+    ListFavorites   { id: listFavorites}
     ListAllGames    { id: listByTitle}
     Resources.Music { id: music}
 
     property int currentCollection: api.memory.has('Last Collection') ? api.memory.get('Last Collection') : -1
     property int nextCollection: api.memory.has('Last Collection') ? api.memory.get('Last Collection') : -1
     property var currentGame
-    property var softwareList: [listByLastPlayed, listByMostPlayed, listByTitle, listByPublisher]
+    property var softwareList: [listByLastPlayed, listByMostPlayed, listByTitle, listByPublisher, listFavorites]
     property int sortByIndex: api.memory.has('sortIndex') ? api.memory.get('sortIndex') : 0
     property string searchtext
     property bool wordWrap: (settings.wordWrap === "Yes") ? true : false;
@@ -119,6 +120,20 @@ FocusScope
         api.memory.set('Last Collection', currentCollection);
         softwareList[sortByIndex].currentGame(currentGameIndex).launch();
             //currentGame.launch();
+    }
+    
+    // Preference order for Game Backgrounds, tiles always come first due to assumption that it's set manually
+    function getGameBackground(gameData, preference){
+        switch (preference) {
+            case "Screenshot":
+                return gameData ? gameData.assets.tile || gameData.assets.screenshots[0] || gameData.assets.background || gameData.assets.boxFront || "" : "";
+            case "Fanart":
+                return gameData ? gameData.assets.tile || gameData.assets.background || gameData.assets.screenshots[0] || gameData.assets.boxFront || "" : "";
+            case "Boxart":
+                return gameData ? gameData.assets.tile || gameData.assets.boxFront || gameData.assets.screenshots[0] || gameData.assets.background || "" : "";
+            default:
+                return ""
+        }
     }
 
     // Theme settings
@@ -355,6 +370,7 @@ FocusScope
             }
             showBack: !homeScreen.focus
             showCollControls: softwareScreen.focus
+            showFav: softwareScreen.focus || homeScreen.focus
         }
 
     }

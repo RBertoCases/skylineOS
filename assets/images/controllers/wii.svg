@@ -17,10 +17,11 @@
    inkscape:export-ydpi="360"
    sodipodi:docname="Nintendo - Wii (copia).svg"
    x="0px"
-   y="0px"
+   y="0px" style="background-color:green"
    width="64px"
    height="64px"
-   viewBox="0 128 64 64"
+   viewBox="0 128 88 88"
+   transform="translate(8,8)"
    enable-background="new 0 128 64 64"
    xml:space="preserve"><metadata
      id="metadata8"><rdf:RDF><cc:Work
@@ -28,7 +29,7 @@
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6" /><sodipodi:namedview
      pagecolor="#808080"
-     bordercolor="#666666"
+     bordercolor="#6066666"
      borderopacity="1"
      objecttolerance="10"
      gridtolerance="10"

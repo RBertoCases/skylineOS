@@ -11,7 +11,7 @@ id: root
         ListElement {
             settingName: "Game Background"
             settingSubtitle: ""
-            setting: "Screenshot,Fanart"
+            setting: "Screenshot,Fanart,Boxart"
         }
 
         ListElement {
