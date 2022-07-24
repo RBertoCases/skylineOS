@@ -4,7 +4,7 @@ A clean and simple theme that aims to recreate the experience of Nintendo's Swit
 
 ![skylineOS Pegasus theme](assets/images/screenshot_bar_end.png)
 
-![skylineOS Pegasus theme](assets/images/screenshot_allsoft_ps1.png)
+![skylineOS Pegasus theme](assets/images/screenshot_allsoft.png)
 
 ___
 
