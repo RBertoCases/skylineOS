@@ -199,7 +199,7 @@ FocusScope
 
                 Image {
                     id: sortArrow
-                    width: Math.round(screenheight*0.05)
+                    width: Math.round(screenheight*0.02)
                     height: width
                     source: "../assets/images/navigation/sort_arrow.png"
                     sourceSize.width: 64
