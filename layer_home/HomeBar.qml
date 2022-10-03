@@ -59,7 +59,7 @@ ListView {
                 radius: isGame ? 0 : width
                 opacity: 1
                 color: theme.button
-                layer.enabled: enableDropShadows //TODO turn off when highlighted
+                layer.enabled: enableDropShadows && !selected //TODO turn off when highlighted
                 layer.effect: DropShadow {
                     transparentBorder: true
                     horizontalOffset: 0
