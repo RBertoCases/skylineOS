@@ -199,7 +199,7 @@ FocusScope
 
                 Image {
                     id: sortArrow
-                    width: Math.round(screenheight*0.05)
+                    width: Math.round(screenheight*0.02)
                     height: width
                     source: "../assets/images/navigation/sort_arrow.png"
                     sourceSize.width: 64
@@ -342,7 +342,7 @@ FocusScope
                         source: gameBG // modelData.collections.get(0).shortName === "steam" ? modelData.assets.screenshot : gameBG
                         sourceSize { width: 256; height: 256 }
                         fillMode: (gameBG == modelData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
-                        layer.enabled: enableDropShadows //FIXME: disabled because it blurs the gameImages.
+                        layer.enabled: enableDropShadows && !selected //FIXME: disabled because it blurs the gameImages.
                         layer.effect: DropShadow {
                             transparentBorder: true
                             horizontalOffset: 0
