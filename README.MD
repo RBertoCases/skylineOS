@@ -14,7 +14,13 @@ Simply download the theme and place it in your [Pegasus theme directory](http://
 
 See [wiki](https://github.com/RBertoCases/skylineOS/wiki) for more information.
 
-## Latest Release
+## Latest Releases
+
+### v0.15.1
+  - Adjusted size of Sort Arrow
+  - Fixed drop shadow behavior on highlight
+  - General system stability improvements have been made to enhance the user's experience
+
 ### v0.15
   - Added Favorites - Courtesy of [ismaelestalayo](https://github.com/ismaelestalayo/skylineOSP)
       - Toggle highlighted game as Favorite
