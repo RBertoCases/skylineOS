@@ -87,7 +87,7 @@ ListView {
                 fillMode: (gameBG == gameData.assets.boxFront) ? Image.PreserveAspectFit : Image.PreserveAspectCrop
                 source: gameBG // gameData.collections.get(0).shortName === "steam" ? gameData.assets.screenshot : gameBG
                 asynchronous: true
-                sourceSize { width: 512; height: 512 }
+                sourceSize { width: 256; height: 256 }
                 
                 anchors.centerIn: parent
 
