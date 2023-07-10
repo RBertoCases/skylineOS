@@ -230,8 +230,8 @@ FocusScope
                     height: width
                     fillMode: Image.PreserveAspectFit
                     source: "../assets/images/charging.svg"
-                    sourceSize.width: 20
-                    sourceSize.height: 36
+                    sourceSize.width: vpx(10)
+                    sourceSize.height: vpx(15)
                     smooth: true
                     horizontalAlignment: Image.AlignLeft
                     anchors {
