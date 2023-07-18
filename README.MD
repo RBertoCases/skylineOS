@@ -2,7 +2,7 @@
 
 A clean and simple theme that aims to recreate the experience of Nintendo's Switch console. skylineOS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/) forked from switchOS.
 
-![skylineOS Pegasus theme](assets/imageas/screenshot_bar_start.jpg)
+![skylineOS Pegasus theme](assets/images/screenshot_bar_start.jpg)
 
 ![skylineOS Pegasus theme](assets/images/screenshot_bar_end.png)
 
