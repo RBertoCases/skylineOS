@@ -2,6 +2,8 @@
 
 A clean and simple theme that aims to recreate the experience of Nintendo's Switch console. skylineOS is a theme for [Pegasus Frontend](http://pegasus-frontend.org/) forked from switchOS.
 
+![skylineOS Pegasus theme](assets/images/screenshot_bar_start.jpg)
+
 ![skylineOS Pegasus theme](assets/images/screenshot_bar_end.png)
 
 ![skylineOS Pegasus theme](assets/images/screenshot_allsoft.png)
@@ -15,6 +17,10 @@ Simply download the theme and place it in your [Pegasus theme directory](http://
 See [wiki](https://github.com/RBertoCases/skylineOS/wiki) for more information.
 
 ## Latest Releases
+
+### v0.15.2
+  - Fixed issue on Windows where battery icon wasn't aligned correctly when displaying the Battery Percentage as well
+  - General system stability improvements have been made to enhance the user's experience
 
 ### v0.15.1
   - Adjusted size of Sort Arrow
