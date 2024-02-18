@@ -211,6 +211,9 @@ function processPlatformName(platform) {
     case "super nintendo entertainment system":
       return "snes";
       break;
+    case "nintendo - super nintendo entertainment system":
+      return "snes";
+      break;
     case "sega cd":
       return "segacd";
       break;
