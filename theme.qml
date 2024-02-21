@@ -152,28 +152,59 @@ FocusScope
         }
     }
 
-    property var themeDark: {
+    property var themeBlack: {
         return {
-            main: "#2D2D2D",
+            main: "black",
             secondary: "#EBEBEB",
             accent: "#1d9bf3",
-            highlight: "black",
+            highlight: "2D2D2D",
             text: "white",
-            button: "#515151",
+            button: "#2D2D2D",
             icon: "white",
             press: "#591d9bf3"
         }
     }
 
-    property var theme : api.memory.get('theme') === 'themeLight' ? themeLight : themeDark ;
-
-    function toggleDarkMode(){
-        if(theme === themeLight){
-        api.memory.set('theme', 'themeDark');
-        }else{
-        api.memory.set('theme', 'themeLight');
+    property var themeDark: {
+            return {
+                main: "#2D2D2D",
+                secondary: "#EBEBEB",
+                accent: "#1d9bf3",
+                highlight: "black",
+                text: "white",
+                button: "#515151",
+                icon: "white",
+                press: "#591d9bf3"
+            }
         }
+
+   property var theme: {
+    switch (api.memory.get('theme')) {
+        case 'themeLight':
+            return themeLight;
+        case 'themeDark':
+            return themeDark;
+        case 'themeBlack':
+            return themeBlack; // Assuming a third option 'themeSystem'
     }
+}
+
+function toggleTheme() {
+    switch (theme) {
+        case themeLight:
+            api.memory.set('theme', 'themeDark');
+            theme = themeDark; // Update the theme property
+            break;
+        case themeDark:
+            api.memory.set('theme', 'themeBlack');
+            theme = themeBlack; // Update the theme property
+            break;
+        case themeBlack: // Assuming a third option 'themeSystem'
+            api.memory.set('theme', 'themeLight');
+            theme = themeLight; // Update the theme property
+            break;
+    }
+}
 
     // State settings
     states: [
@@ -296,7 +327,7 @@ FocusScope
         // disabled
         /*if (api.keys.isFilters(event) && !event.isAutoRepeat) {
             event.accepted = true;
-            toggleDarkMode();
+            toggleTheme();
         }
     }*/
 

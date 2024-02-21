@@ -312,7 +312,7 @@ FocusScope
                     if (api.keys.isAccept(event) && !event.isAutoRepeat) {
                         event.accepted = true;
                         selectSfx.play();
-                        toggleDarkMode();
+                        toggleTheme();
                     }
                 }
 
@@ -329,7 +329,7 @@ FocusScope
                     if (themeButton.focus)
                     {
                         selectSfx.play();
-                        toggleDarkMode();
+                        toggleTheme();
                     }
                     else
                         themeButton.focus = true;
