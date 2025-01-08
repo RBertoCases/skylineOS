@@ -184,6 +184,9 @@ function processPlatformName(platform) {
     case "sega cd":
       return "segacd";
       break;
+    case "nec turbografx-cd":
+      return "turbografx16";
+      break;  
     case "nec turbografx-16":
       return "turbografx16";
       break;
